@@ -9,4 +9,4 @@ Connect once:
 
 The first time you read a book, Leaf asks which of your books it is. After that every session lands on its own.
 
-Sessions are sent when the reader connects to Wi-Fi or goes to sleep. The reader keeps about a dozen sessions while offline; connect to Wi-Fi now and then.
+Sessions are sent when the reader connects to Wi-Fi or goes to sleep. The reader keeps about a dozen sessions while offline, so connect to Wi-Fi now and then.
