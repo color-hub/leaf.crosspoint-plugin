@@ -1,0 +1,16 @@
+{
+  "title": "Leaf",
+  "description": "Sends your reading sessions to Leaf",
+  "token": { "file": "/.crosspoint/.leaf-token.json", "path": "token" },
+  "events": {
+    "reader.session": {
+      "request": {
+        "method": "POST",
+        "url": "https://readersync-485315818927.us-central1.run.app/v1/sessions",
+        "headers": { "Authorization": "Bearer {token}", "Content-Type": "text/plain" },
+        "body": "{\"id\":\"{event.id}\",\"document\":\"{event.document}\",\"start\":{event.start_time},\"duration\":{event.duration_seconds},\"from\":{event.start_progress_bp},\"to\":{event.end_progress_bp},\"book\":\"{event.book}\"}"
+      },
+      "connect": true
+    }
+  }
+}

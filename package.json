@@ -1,0 +1,13 @@
+{
+  "name": "leaf-crosspoint-plugin",
+  "private": true,
+  "description": "Tests for the Leaf plugin for CrossPoint e-readers",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

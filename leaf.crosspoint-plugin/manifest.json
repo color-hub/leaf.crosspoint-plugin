@@ -1,0 +1,9 @@
+{
+  "name": "leaf",
+  "title": "Leaf",
+  "description": "Sends your reading sessions to Leaf",
+  "author": "Color Hub",
+  "version": "1.0.0",
+  "mount": "settings",
+  "files": ["manifest.json", "device.json", "plugin.js", "README.md"]
+}

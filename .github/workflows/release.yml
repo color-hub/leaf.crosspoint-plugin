@@ -1,0 +1,36 @@
+# A pushed tag vX.Y.Z becomes the GitHub release Plugin Hub installs from:
+# the tests pass, the tag matches manifest.json's version, and leaf.zip (the
+# payload as a `leaf` folder, for a manual install) is attached.
+name: release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Tag matches the manifest version
+        run: |
+          version=$(node -p "require('./leaf.crosspoint-plugin/manifest.json').version")
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME, manifest $version"; exit 1; }
+      - name: Package leaf.zip
+        run: |
+          mkdir -p dist/leaf
+          cp leaf.crosspoint-plugin/* dist/leaf/
+          (cd dist && zip -r leaf.zip leaf)
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/leaf.zip --title "Leaf $GITHUB_REF_NAME" --generate-notes
