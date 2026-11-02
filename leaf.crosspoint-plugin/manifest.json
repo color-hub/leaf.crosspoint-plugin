@@ -1,9 +1,9 @@
 {
   "name": "leaf",
-  "title": "Leaf",
-  "description": "Sends your reading sessions to Leaf",
+  "title": "Leaf: Reading Tracker",
+  "description": "Track your reading in the Leaf phone app. Time and pages arrive from the reader on their own.",
   "author": "Color Hub",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "mount": "settings",
-  "files": ["manifest.json", "device.json", "plugin.js", "README.md"]
+  "files": ["manifest.json", "device.json", "plugin.js", "README.md", "DETAILS.md"]
 }

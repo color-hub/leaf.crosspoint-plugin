@@ -27,6 +27,8 @@ const firmware = {
   maxManifestBytes: 8 * 1024,
   maxTokenFileBytes: 2 * 1024,
   maxReadmeBytes: 16 * 1024,
+  // Plugin Hub's tools/build_catalog.py, MAX_DETAILS_SOURCE_BYTES.
+  maxDetailsBytes: 16 * 1024,
 };
 
 module.exports = {PAYLOAD_DIR, readText, readJson, firmware};

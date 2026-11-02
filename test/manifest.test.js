@@ -42,7 +42,7 @@ test('files lists every file of the payload and nothing else', () => {
 
 test('the card mounts on the Settings page', () => {
   assert.equal(manifest.mount, 'settings');
-  assert.equal(manifest.title, 'Leaf');
+  assert.equal(manifest.title, 'Leaf: Reading Tracker');
   assert.ok(manifest.description.length > 0);
 });
 
@@ -50,6 +50,15 @@ test('the manifests and the README fit the firmware caps', () => {
   assert.ok(Buffer.byteLength(readText('manifest.json')) <= firmware.maxManifestBytes);
   assert.ok(Buffer.byteLength(readText('device.json')) <= firmware.maxManifestBytes);
   assert.ok(Buffer.byteLength(readText('README.md')) <= firmware.maxReadmeBytes);
+});
+
+test('DETAILS.md fits the Hub and uses only what its renderer draws', () => {
+  const details = readText('DETAILS.md');
+  assert.ok(Buffer.byteLength(details) <= firmware.maxDetailsBytes);
+  // The Hub draws headings, `- ` lists and paragraphs: a numbered list collapses
+  // into one paragraph and a Markdown link shows its brackets.
+  assert.doesNotMatch(details, /^\d+\. /m);
+  assert.doesNotMatch(details, /\]\(/);
 });
 
 test('device.json shows the same title and description as the manifest', () => {

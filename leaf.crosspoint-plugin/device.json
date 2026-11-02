@@ -1,6 +1,6 @@
 {
-  "title": "Leaf",
-  "description": "Sends your reading sessions to Leaf",
+  "title": "Leaf: Reading Tracker",
+  "description": "Track your reading in the Leaf phone app. Time and pages arrive from the reader on their own.",
   "token": { "file": "/.crosspoint/.leaf-token.json", "path": "token" },
   "events": {
     "reader.session": {
